@@ -22,8 +22,7 @@ DB: Database
    ```
    System: Device powered on
    UI: Initialize login screen interface
-   UI: Display login form (username, password fields)
-   UI: Show system branding and version information
+   UI: Display login form (username, password fields); Show system branding and version information
    ```
 
 2. **User Credential Entry**
@@ -202,8 +201,7 @@ DB: Database
    UI: Check for unsaved data or pending operations
    
    If active scan in progress:
-     UI: Display warning "Scan in progress. Logout will stop current measurement."
-     User -> UI: Confirm or cancel logout
+     UI: Display dialog error "Scan in progress. Please end scanning session before logging out."
    
    If unsaved data exists:
      UI: Display option to save pending data before logout
@@ -243,7 +241,6 @@ DB: Database
    UI: Clear user-specific UI state and preferences
    UI: Reset interface to default login state
    UI: Transition from current screen to login screen
-   UI: Display login form for new authentication
    ```
 
 10. **Security Cleanup**
@@ -390,8 +387,7 @@ DB: Database
    UI: Check for unsaved data or pending operations
    
    If active scan in progress:
-     UI: Display warning "Scan in progress. Shutdown will terminate measurement."
-     User -> UI: Confirm or cancel shutdown
+     UI: Display dialog error "Can not shut down while scan in progress. Please end scan session before shutting down."
    
    If unsaved data exists:
      UI: Prompt to save critical data before shutdown
@@ -409,7 +405,6 @@ DB: Database
    MW API: Validate system ready for power down
    MW API: Stop all active measurement processes
    MW API: Save system state and user session information
-   MW API: Prepare for graceful hardware shutdown
    ```
 
 7. **Hardware Component Shutdown**
@@ -418,7 +413,6 @@ DB: Database
    HW API: Safely shut down X-ray tube
    HW API: Turn off DPP (Digital Pulse Processor)
    HW API: Disable radiation LED
-   HW API: Power down detector systems
    HW API -> MW API: Return hardware_shutdown_status (SUCCESS/FAILED)
    ```
 
@@ -455,7 +449,7 @@ DB: Database
       System: Complete power down
     
     If Sleep:
-      UI: Display sleep mode indicator
+      UI: Display off
       System: Enter low-power state with wake capability
     ```
 

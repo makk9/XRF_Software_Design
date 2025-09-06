@@ -77,13 +77,6 @@ Safety: Safety System
 - **Transition State**: Starting (during hardware activation)
 - **Final State**: Active (ready for data collection)
 
-### Key Design Decisions
-- **Async UI**: UI doesn't block during hardware startup
-- **Sync Hardware**: MW API waits for hardware confirmation before proceeding
-- **Safety Integration**: LED activation is mandatory safety requirement
-- **Session Management**: Each scan gets unique session ID for tracking
-- **Audit Trail**: All scan starts logged to database
-
 ### API Sequence Diagram
 
 ```
@@ -109,7 +102,6 @@ User    UI       MW API            HW API    DB
 - Radiation LED activated (safety requirement)
 - System state updated to "Active"
 - Scan session created and logged
-
 ---
 
 ## Use Case 2: View Spectrum (Live)
@@ -165,17 +157,6 @@ HW API: Hardware API
    Process repeats every [X ms] while scan is active
    ```
 
-### Key Design Decisions
-- **Push-based**: HW API actively pushes data rather than polling
-- **Async Streaming**: Non-blocking data flow for real-time performance
-- **Middleware Processing**: MW API handles calibration and formatting
-- **Buffering**: MW API maintains spectrum cache for smooth UI updates
-- **Continuous Process**: Runs automatically during active scan state
-
-### Data Flow Pattern
-- **Direction**: HW API -> MW API -> UI (unidirectional push)
-- **Frequency**: Continuous stream during scan (typical: 100-500ms intervals)
-- **Format**: Raw counts -> Calibrated spectrum -> Formatted display data
 
 ### API Sequence Diagram
 
@@ -266,18 +247,6 @@ HW API: Hardware API
    ```
    Process repeats every [X ms] while scan is active
    ```
-
-### Key Design Decisions
-- **Sync Calc Engine**: MW API waits for chemistry calculation completion
-- **Async UI Push**: Non-blocking chemistry updates to interface
-- **Real-time Processing**: Chemistry calculated from live spectrum data
-- **Uncertainty Display**: Include measurement uncertainties in results
-- **Formatted Output**: MW API handles display formatting for UI
-
-### Data Flow Pattern
-- **Direction**: HW API -> MW API -> Calc Engine -> MW API -> UI
-- **Processing**: Raw spectrum -> Calibrated data -> Chemistry analysis -> Formatted display
-- **Frequency**: Matches spectrum update rate (chemistry calculated from each spectrum)
 
 ### API Sequence Diagram
 

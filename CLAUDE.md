@@ -71,8 +71,31 @@ All use cases follow this standardized structure:
 - Documenting component interactions, data structures, and error handling
 - Preparing technical blueprint for implementation phase
 
+## Manual Cross-Reference
+All use cases have been mapped to Vanta Monarch User Interface Guide (see VANTA_MANUAL_REFERENCE.md for detailed page references):
+
+### Key Manual Insights Integrated:
+- **Touch-based UI**: Real-time spectrum display, context-sensitive menus, progress indicators
+- **Safety-First Design**: Multiple interlocks, emergency stop, radiation LED synchronization
+- **Mode-Dependent Configuration**: PMI/Geochem/Mining modes with different libraries and settings
+- **Real-time Processing**: Live spectrum updates, continuous chemistry calculations, status monitoring
+- **Quality Control Integration**: Pass/fail determination, confidence thresholds, mismatch detection
+- **Comprehensive Logging**: Audit trails for compliance, safety event logging, result persistence
+
+### Validated Architecture Patterns:
+- **UI Layer**: Touch navigation, real-time displays, status indicators (Pages 8-15, 25-28, 42-45)
+- **MW API**: Workflow coordination, safety rule enforcement, state management (Pages 28-32, 95-102)
+- **HW API**: X-ray tube control, detector management, safety interlocks (Pages 16-22, 91-95)
+- **Database**: Grade libraries, result storage, audit trails (Pages 32-38, 125-131)
+- **Calc Engine**: Spectral analysis, chemistry calculations, grade matching (Pages 48-52, 98-105)
+
+### Critical Workflow Chains:
+1. **Setup → Calibration → Measurement → Quality Control**
+2. **Safety Integration spans all workflows**
+3. **Real-time processing during all measurements**
+
 ## Next Steps
-- Complete sequence diagrams for all use cases
-- Define specific API contracts and data structures
-- Document error scenarios and recovery procedures
-- Validate safety integration points
+- Complete sequence diagrams for all use cases (using manual specifications)
+- Define specific API contracts and data structures (based on manual requirements)
+- Document error scenarios and recovery procedures (per manual safety protocols)
+- Validate safety integration points (against manual safety requirements)

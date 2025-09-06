@@ -1,6 +1,6 @@
 # XRF Analyzer System - Application Specific Use Cases
 
-## Use Case 1: Grade Match
+## Use Case 1: Grade Match ** NOT SURE 
 
 ### Overview
 Automated grade identification system that compares measured chemistry against grade library specifications to determine material grade matches. System calculates match numbers, applies statistical confidence boundaries, and provides grade determination results for PMI applications.
@@ -20,11 +20,17 @@ DB: Database
 
 1. **Grade Library Selection**
    ```
+   User -> UI: Select grade match from menu
    UI -> MW API: GET /api/grade-match/libraries (async)
    MW API -> DB: getGradeLibraries(current_test_mode)
-   DB -> MW API: Return available_libraries (Factory, User, Residuals)
+   DB -> MW API: Return available_libraries
    MW API -> UI: Return library_options
    UI: Display grade library selection interface
+   
+   User -> UI: Select a grade match library from selection interface
+   UI -> MW API: POST /api/grade-match/select (async)
+   MW API: Load selected grade match library details into current_grade_match state
+   MW API -> UI: Display selected grade match library onto screen
    ```
 
 2. **Grade Match Settings Configuration**
