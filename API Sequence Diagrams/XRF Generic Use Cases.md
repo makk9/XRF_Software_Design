@@ -47,7 +47,7 @@ Safety: Safety System
    HW API: Activate X-ray tube (voltage, current)
    HW API -> MW API: Return tube status (SUCCESS/FAILED)
    
-   MW API -> HW API: startDPP() (sync)  
+   MW API -> HW API: startDPP() (sync)
    HW API: Initialize Digital Pulse Processor
    HW API -> MW API: Return DPP status (SUCCESS/FAILED)
    ```
