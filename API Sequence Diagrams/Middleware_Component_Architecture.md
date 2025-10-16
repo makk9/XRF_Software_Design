@@ -29,7 +29,7 @@ This document defines the logical middleware components for the XRF analyzer sys
 
 ---
 
-## 1. Hardware Interface Manager
+## 1. Hardware Interface Manager (NEEDS TO BE SIMPLIFIED/ABSTRACTED to use HW API calls)
 
 **Responsibility**: Direct control and communication with hardware components (DPP, X-ray tube, camera hardware). Provides low-level hardware abstraction layer.
 
